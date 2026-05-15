@@ -17,18 +17,23 @@
            style="-fx-font-size: 13; -fx-text-fill: #888;"/>
 
     <Button text="🚗  Vehicle Entry" prefWidth="300" prefHeight="50"
+            onAction="#openVehicleEntry"
             style="-fx-background-color: #E1F5EE; -fx-text-fill: #0F6E56; -fx-font-size: 14; -fx-background-radius: 10;"/>
 
     <Button text="🚪  Vehicle Exit" prefWidth="300" prefHeight="50"
+            onAction="#openVehicleExit"
             style="-fx-background-color: #FAECE7; -fx-text-fill: #993C1D; -fx-font-size: 14; -fx-background-radius: 10;"/>
 
     <Button text="🅿️  Occupancy Status" prefWidth="300" prefHeight="50"
+            onAction="#openOccupancyStatus"
             style="-fx-background-color: #E6F1FB; -fx-text-fill: #185FA5; -fx-font-size: 14; -fx-background-radius: 10;"/>
 
     <Button text="📋  Parked Vehicles" prefWidth="300" prefHeight="50"
+            onAction="#openParkedVehicles"
             style="-fx-background-color: #FAEEDA; -fx-text-fill: #854F0B; -fx-font-size: 14; -fx-background-radius: 10;"/>
 
     <Button text="📊  Daily Revenue" prefWidth="300" prefHeight="50"
+            onAction="#openDailyRevenue"
             style="-fx-background-color: #EEEDFE; -fx-text-fill: #534AB7; -fx-font-size: 14; -fx-background-radius: 10;"/>
 
 </VBox>
