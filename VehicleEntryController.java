@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 
 public class VehicleEntryController {
 
+    ParkingRecordDatabase parkingRecordDatabase = new ParkingRecordDatabase();
     VehicleService vehicleService = new VehicleService();
 
     @FXML private TextField licensePlateField;
@@ -35,6 +36,8 @@ public class VehicleEntryController {
         boolean exists = vehicleService.isVehicleExists(licensePlate);
 
         if (exists) {
+            Vehicle vehicle = vehicleService.vehicleDatabase.getVehicle(licensePlate);
+            parkingRecordDatabase.saveEntryRecord(vehicle.getVehicleId());
             messageLabel.setText("Vehicle found. Parking record created.");
             messageLabel.setStyle("-fx-text-fill: green;");
         } else {

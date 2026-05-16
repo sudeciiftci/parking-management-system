@@ -16,6 +16,7 @@ public class VehicleDatabase {
 
             if (rs.next()) {
                 return new Vehicle(
+                    rs.getInt("vehicle_id"),
                     rs.getString("license_plate"),
                     rs.getString("type"),
                     rs.getString("brand"),
@@ -27,7 +28,6 @@ public class VehicleDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

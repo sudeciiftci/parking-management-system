@@ -13,6 +13,8 @@
         "/Users/sudelide/Desktop/javafx-sdk-26.0.1/lib/javafx.web.jar",
         "/Users/sudelide/Desktop/javafx-sdk-26.0.1/lib/jdk.jsobject.jar",
         "/Users/sudelide/Desktop/javafx-sdk-26.0.1/lib/jfx.incubator.input.jar",
-        "/Users/sudelide/Desktop/javafx-sdk-26.0.1/lib/jfx.incubator.richtext.jar"
+        "/Users/sudelide/Desktop/javafx-sdk-26.0.1/lib/jfx.incubator.richtext.jar",
+
+        "/Users/sudelide/Desktop/parking management system/lib/mysql-connector-j-9.2.0.jar"
     ]
 }
