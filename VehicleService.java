@@ -16,4 +16,16 @@ public class VehicleService {
         Vehicle vehicle = vehicleDatabase.getVehicle(licensePlate);
         return vehicle != null;
     }
+
+    public boolean areVehicleFieldsValid(String licensePlate, String type, String brand, String model, String color) {
+        return !(licensePlate.isBlank() ||
+                type == null || type.isBlank() ||
+                brand.isBlank() ||
+                model.isBlank() ||
+                color.isBlank());
+    }
+    
+    public boolean registerVehicle(Vehicle vehicle) {
+        return vehicleDatabase.saveVehicle(vehicle);
+    }
 }

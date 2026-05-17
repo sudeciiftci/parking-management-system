@@ -6,7 +6,7 @@ import javafx.scene.layout.VBox;
 
 public class VehicleEntryController {
 
-    ParkingRecordDatabase parkingRecordDatabase = new ParkingRecordDatabase();
+    ParkingRecordService parkingRecordService = new ParkingRecordService();
     VehicleService vehicleService = new VehicleService();
 
     @FXML private TextField licensePlateField;
@@ -36,8 +36,7 @@ public class VehicleEntryController {
         boolean exists = vehicleService.isVehicleExists(licensePlate);
 
         if (exists) {
-            Vehicle vehicle = vehicleService.vehicleDatabase.getVehicle(licensePlate);
-            parkingRecordDatabase.saveEntryRecord(vehicle.getVehicleId());
+            parkingRecordService.createEntryRecord(licensePlate);
             messageLabel.setText("Vehicle found. Parking record created.");
             messageLabel.setStyle("-fx-text-fill: green;");
         } else {
@@ -50,6 +49,29 @@ public class VehicleEntryController {
 
     @FXML
     private void saveVehicle() {
-        // veritabanı bağlantısı yapılınca burası dolacak
+
+        String licensePlate = licensePlateField.getText();
+        String type = typeComboBox.getValue();
+        String brand = brandField.getText();
+        String model = modelField.getText();
+        String color = colorField.getText();
+
+        if (!vehicleService.areVehicleFieldsValid(licensePlate, type, brand, model, color)) {
+            messageLabel.setText("Please fill all fields.");
+            messageLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        Vehicle vehicle = new Vehicle(licensePlate, type, brand, model, color);
+
+        boolean saved = vehicleService.registerVehicle(vehicle);
+
+        if(saved){
+            parkingRecordService.createEntryRecord(licensePlate);
+            messageLabel.setText("Vehicle saved successfully.");
+            messageLabel.setStyle("-fx-text-fill: green;");
+        }else{
+            messageLabel.setText("Vehicle could not be saved.");
+        }
     }
 }
