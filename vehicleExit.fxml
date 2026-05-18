@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="VehicleExitController"
+      alignment="CENTER"
+      spacing="18"
+      prefWidth="500"
+      prefHeight="400"
+      style="-fx-padding: 50; -fx-background-color: #f5f5f5;">
+
+    <Label text="Vehicle Exit"
+           style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #E05C3A;"/>
+
+    <HBox spacing="12" alignment="CENTER">
+        <TextField fx:id="licensePlateField"
+                   promptText="Enter license plate"
+                   prefWidth="280"
+                   prefHeight="40"
+                   style="-fx-font-size: 14;"/>
+        <Button text="Search"
+                onAction="#searchVehicle"
+                prefHeight="40"
+                style="-fx-background-color: #E05C3A; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 8;"/>
+    </HBox>
+
+    <Label fx:id="messageLabel"
+           text=""
+           style="-fx-font-size: 14;"/>
+
+    <VBox fx:id="infoBox"
+          spacing="14"
+          alignment="CENTER"
+          visible="false"
+          managed="false">
+
+        <Label fx:id="entryTimeLabel"
+               text="Entry Time: "
+               style="-fx-font-size: 14;"/>
+
+        <Label fx:id="exitTimeLabel"
+               text="Exit Time: "
+               style="-fx-font-size: 14;"/>
+
+        <Label fx:id="durationLabel"
+               text="Duration: "
+               style="-fx-font-size: 14;"/>
+
+        <Label fx:id="feeLabel"
+               text="Fee: "
+               style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #E05C3A;"/>
+
+        <Button text="Complete Exit"
+                onAction="#completeExit"
+                prefWidth="320"
+                prefHeight="40"
+                style="-fx-background-color: #E05C3A; -fx-text-fill: white; -fx-font-size: 14; -fx-background-radius: 8;"/>
+
+    </VBox>
+
+</VBox>
