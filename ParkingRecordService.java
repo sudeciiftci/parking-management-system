@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class ParkingRecordService {
 
@@ -47,6 +48,10 @@ public class ParkingRecordService {
         double fee = calculateFee(licensePlate);
         parkingRecordDatabase.saveExitRecord(vehicle.getVehicleId(), fee);
         return true;
+    }
+
+    public List<String[]> getActiveVehicles() {
+        return parkingRecordDatabase.getActiveVehicles();
     }
 
 
