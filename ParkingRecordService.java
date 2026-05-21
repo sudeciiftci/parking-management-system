@@ -44,7 +44,8 @@ public class ParkingRecordService {
         if (vehicle == null) {
             return false;
         }
-        parkingRecordDatabase.saveExitRecord(vehicle.getVehicleId());
+        double fee = calculateFee(licensePlate);
+        parkingRecordDatabase.saveExitRecord(vehicle.getVehicleId(), fee);
         return true;
     }
 

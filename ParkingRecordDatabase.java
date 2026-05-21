@@ -45,13 +45,14 @@ public class ParkingRecordDatabase {
         return null;
     }
 
-    public void saveExitRecord(int vehicleId){
+    public void saveExitRecord(int vehicleId, double fee){
 
-        String sql = "UPDATE parking_records SET exit_time = NOW() WHERE vehicle_id = ? AND exit_time IS NULL";
+        String sql = "UPDATE parking_records SET exit_time = NOW(), fee = ?  WHERE vehicle_id = ? AND exit_time IS NULL";
 
         try(PreparedStatement ps = database.con().prepareStatement(sql)){
 
-            ps.setInt(1, vehicleId);
+            ps.setInt(2, vehicleId);
+            ps.setDouble(1, fee);
             ps.executeUpdate();
 
         }catch(SQLException e){
