@@ -28,4 +28,12 @@ public class VehicleService {
     public boolean registerVehicle(Vehicle vehicle) {
         return vehicleDatabase.saveVehicle(vehicle);
     }
+
+    public int getVehicleId(String licensePlate) {
+        Vehicle vehicle = vehicleDatabase.getVehicle(licensePlate);
+        if (vehicle == null) {
+            return -1;
+        }
+        return vehicle.getVehicleId();
+    }
 }

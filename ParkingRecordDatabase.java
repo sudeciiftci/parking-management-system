@@ -82,5 +82,28 @@ public class ParkingRecordDatabase {
         }
         return list;
     }
+
+    public List<String[]> getVehicleRecords(int vehicleId) {
+
+        List<String[]> list = new ArrayList<>();
+        String sql = "SELECT pr.entry_time, pr.exit_time, pr.fee FROM parking_records pr WHERE pr.vehicle_id = ?";
+
+        try {
+            PreparedStatement ps = database.con().prepareStatement(sql);
+            ps.setInt(1, vehicleId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String[] row = new String[3];
+                row[0] = rs.getString("entry_time");
+                row[1] = rs.getString("exit_time");
+                row[2] = rs.getString("fee");
+                list.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     
 }

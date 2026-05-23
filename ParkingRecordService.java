@@ -54,5 +54,9 @@ public class ParkingRecordService {
         return parkingRecordDatabase.getActiveVehicles();
     }
 
+    public List<String[]> getVehicleRecords(int vehicleId) {
+        return parkingRecordDatabase.getVehicleRecords(vehicleId);
+    }
+
 
 }
