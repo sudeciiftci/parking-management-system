@@ -58,5 +58,9 @@ public class ParkingRecordService {
         return parkingRecordDatabase.getVehicleRecords(vehicleId);
     }
 
+    public List<String[]> getDailyRevenue(String date){
+        return parkingRecordDatabase.getDailyRevenue(date);
+    }
+
 
 }

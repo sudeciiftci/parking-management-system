@@ -74,7 +74,7 @@ public class ParkingRecordDatabase {
             while (rs.next()) {
                 String[] row = new String[2];
                 row[0] = rs.getString("license_plate");
-                row[1] = rs.getString("entry_time");  // ya da getTimestamp
+                row[1] = rs.getString("entry_time");  
                 list.add(row);
             }
         } catch (Exception e) {
@@ -106,4 +106,34 @@ public class ParkingRecordDatabase {
         return list;
     }
     
+    public List<String[]> getDailyRevenue(String date){
+        List<String[]> list = new ArrayList<>();
+
+        String sql = "SELECT v.license_plate, pr.entry_time, pr.exit_time, pr.fee FROM parking_records pr JOIN vehicles v ON pr.vehicle_id = v.vehicle_id WHERE DATE(pr.exit_time) = ?";
+
+        try(
+            PreparedStatement ps = database.con().prepareStatement(sql)
+        ){
+
+            ps.setString(1, date);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                String[] row = new String[4];
+
+                row[0] = rs.getString("license_plate");
+                row[1] = rs.getString("entry_time");
+                row[2] = rs.getString("exit_time");
+                row[3] = rs.getString("fee");
+
+                list.add(row);
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 }
